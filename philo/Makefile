@@ -6,13 +6,20 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/03/23 18:41:56 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/03/27 20:05:50 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+.DEFAULT_GOAL	=	all
 
-SRC = main.c
+NAME			=	philo
+
+SRC				=	main.c \
+					ft_isdigit.c \
+					ft_strlen.c \
+					ft_isspace.c \
+					ft_atoui.c \
+					are_inputs_valid.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -21,7 +28,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 INC = -I .
 
-.DEFAULT_GOAL = all
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -42,6 +48,10 @@ re: fclean all
 ############ REMOVE ##############
 run: $(NAME)
 	./$(NAME) 5 1000 200 300 10
+	./$(NAME) 5 1000 2147483647 300 10
+	./$(NAME) 5 1000 2147483648 300 10
+	./$(NAME) 5 1000 200 300 -10
+	./$(NAME) 5 1000 200 300 +10
 
 norm:
 	norminette

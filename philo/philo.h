@@ -6,12 +6,20 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/23 18:34:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/27 20:15:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+# define FT_MAX_INT 2147483647
+
+# define RED "\033[0;31m"
+# define YELLOW "\033[1;33m"
+# define GREEN "\033[0;32m"
+# define CYAN "\033[0;36m"
+# define RESET "\033[0m"
 
 # include <string.h>
 // memset
@@ -38,5 +46,14 @@
 // pthread_mutex_destroy
 // pthread_mutex_lock
 // pthread_mutex_unlock
+
+// UTILS
+int				ft_isdigit(int c);
+size_t			ft_strlen(char *str);
+int				ft_isspace(int c);
+unsigned int	ft_atoui(char *str);
+
+// VALIDATION
+int				are_inputs_valid(char **inputs);
 
 #endif
