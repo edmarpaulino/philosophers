@@ -6,14 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 16:21:05 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:47:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# define FT_S_MAX_INT "2147483647"
+# define FT_STR_MAX_INT "2147483647"
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -54,6 +54,6 @@ int		ft_isspace(int c);
 int		ft_atoi(const char *nptr);
 
 // VALIDATION
-int		are_inputs_valid(const char **inputs);
+int		are_args_valid(const int argc, const char **argv);
 
 #endif
