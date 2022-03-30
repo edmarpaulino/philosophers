@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 15:38:26 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:21:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@
 // pthread_mutex_unlock
 
 // UTILS
-int				ft_isdigit(int c);
-size_t			ft_strlen(char *str);
-int				ft_isspace(int c);
+int		ft_isdigit(int c);
+size_t	ft_strlen(char *str);
+int		ft_isspace(int c);
+int		ft_atoi(const char *nptr);
 
 // VALIDATION
-int				are_inputs_valid(const char **inputs);
+int		are_inputs_valid(const char **inputs);
 
 #endif

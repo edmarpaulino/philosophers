@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/03/30 15:29:10 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/03/30 16:21:20 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC				=	main.c \
 					ft_isdigit.c \
 					ft_strlen.c \
 					ft_isspace.c \
+					ft_atoi.c \
 					are_inputs_valid.c
 
 OBJ = $(SRC:.c=.o)
