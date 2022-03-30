@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lfree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 14:41:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 19:51:51 by edpaulin         ###   ########.fr       */
+/*   Created: 2022/03/30 19:04:29 by edpaulin          #+#    #+#             */
+/*   Updated: 2022/03/30 19:28:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
+void	ft_lfree(t_list *list)
 {
-	if (!are_args_valid((const int)argc, (const char **)argv))
+	t_list	*aux;
+
+	while (list)
 	{
-		printf(RED "Error: Invalid arguments\n" RESET);
-		return (1);
+		if (list->content)
+			free(list->content);
+		aux = list;
+		list = list->next;
+		free(aux);
 	}
-	printf(GREEN "All inputs are valid\n" RESET);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 18:47:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/30 19:26:19 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@
 // pthread_mutex_lock
 // pthread_mutex_unlock
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
 // UTILS
 int		ft_isdigit(int c);
 size_t	ft_strlen(char *str);
@@ -55,5 +61,7 @@ int		ft_atoi(const char *nptr);
 
 // VALIDATION
 int		are_args_valid(const int argc, const char **argv);
+void	*ft_lalloc(t_list **list, size_t alloc_size);
+void	ft_lfree(t_list *list);
 
 #endif
