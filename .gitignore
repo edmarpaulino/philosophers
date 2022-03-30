@@ -1,2 +1,5 @@
 # IDE Configs
 .vscode
+*/*.o
+*/*.out
+*/*.a
