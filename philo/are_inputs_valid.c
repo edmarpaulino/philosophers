@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:56:09 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 15:28:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:38:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_num(const char *input);
 static int	is_int(const char *input);
 static int	is_greater_than_max_int(const char *s_num1, const char *s_num2);
 
-int	are_inputs_valid(char **inputs)
+int	are_inputs_valid(const char **inputs)
 {
 	int	i;
 

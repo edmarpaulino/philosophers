@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 15:29:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:38:26 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ size_t			ft_strlen(char *str);
 int				ft_isspace(int c);
 
 // VALIDATION
-int				are_inputs_valid(char **inputs);
+int				are_inputs_valid(const char **inputs);
 
 #endif
