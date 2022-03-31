@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/30 19:26:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 11:47:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,104 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-// UTILS
+typedef struct s_data
+{
+	int				is_alone;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				times_must_eat;
+	long			first_stamp;
+	pthread_mutex_t	*lock_print_action;
+	pthread_mutex_t	*lock_dinner;
+	t_list			*free_me;
+}	t_data;
+
+typedef struct s_philo
+{
+	int				philo_number;
+	int				meal_counter;
+	long			last_meal;
+	pthread_t		philo_thread;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*lock_last_meal;
+	pthread_mutex_t	*lock_meal_counter;
+	t_data			*data;
+}	t_philo;
+
+// ==================== UTILS ====================
+
+/**
+ * @brief checks for a digit (0 through 9)
+ * 
+ * @param c character to check if is digit
+ * @return int 1 if it is a digit or 0 if it is not
+ */
 int		ft_isdigit(int c);
+
+/**
+ * @brief calculate the length of a string
+ * 
+ * @param str string to calculate its length
+ * @return size_t number of bytes in the string pointed to str
+ */
 size_t	ft_strlen(char *str);
+
+/**
+ * @brief checks for white-space characters
+ * 
+ * @param c character to check if is a white-space
+ * @return int 1 if it is a white-space or 0 if it is not
+ */
 int		ft_isspace(int c);
+
+/**
+ * @brief convert a string to an integer
+ * 
+ * @param nptr string to convert to an integer
+ * @return int the converted value
+ */
 int		ft_atoi(const char *nptr);
 
-// VALIDATION
-int		are_args_valid(const int argc, const char **argv);
+/**
+ * @brief allocate dynamic memory and add it in a list
+ * 
+ * @param list list to add the allocated memory
+ * @param alloc_size size of memory allocation
+ * @return void* pointer to the allocated memory or NULL if failed to 
+ * allocate memory
+ */
 void	*ft_lalloc(t_list **list, size_t alloc_size);
+
+/**
+ * @brief free dynamic memory allocated inside the list
+ * 
+ * @param list list of allocated memory
+ */
 void	ft_lfree(t_list *list);
+
+// ================== VALIDATION =================
+
+/**
+ * @brief check if arguments are valids for philosophers program, number of
+ * philosopher, time to die, time to eat, time to sleep, (optional) number of
+ * times each philosopher must eat
+ * 
+ * @param argc number of arguments
+ * @param argv arguments array
+ * @return int 1 if arguments are valid or 0 if they not
+ */
+int		are_args_valid(const int argc, const char **argv);
+
+// ================ INITIALIZATION ===============
+
+// ================== ALGORITHM ==================
+
+// =================== ACTIONS ===================
+
+// ==================== ERRORS ===================
+
+// ===================== EXIT ====================
 
 #endif
