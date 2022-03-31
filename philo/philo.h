@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 11:47:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:02:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	ft_lfree(t_list *list);
 // ================== VALIDATION =================
 
 /**
- * @brief check if arguments are valids for philosophers program, number of
+ * @brief check if arguments are valid for philosophers program, number of
  * philosopher, time to die, time to eat, time to sleep, (optional) number of
  * times each philosopher must eat
  * 
