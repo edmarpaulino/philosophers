@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 12:02:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:29:48 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define PHILO_H
 
 # define FT_STR_MAX_INT "2147483647"
+
+# define NUM_OF_PHILOS 1
+# define TIME_TO_DIE 2
+# define TIME_TO_EAT 3
+# define TIME_TO_SLEEP 4
+# define TIMES_MUST_EAT 5
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -47,6 +53,8 @@
 // pthread_mutex_lock
 // pthread_mutex_unlock
 
+typedef pthread_mutex_t	t_mutex;
+
 typedef struct s_list
 {
 	void			*content;
@@ -55,13 +63,14 @@ typedef struct s_list
 
 typedef struct s_data
 {
-	int				is_alone;
+	int				num_of_philos;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				times_must_eat;
+	int				is_alone;
 	long			first_stamp;
-	pthread_mutex_t	*lock_print_action;
+	pthread_mutex_t	*lock_print;
 	pthread_mutex_t	*lock_dinner;
 	t_list			*free_me;
 }	t_data;
@@ -137,13 +146,30 @@ void	ft_lfree(t_list *list);
  * philosopher, time to die, time to eat, time to sleep, (optional) number of
  * times each philosopher must eat
  * 
- * @param argc number of arguments
- * @param argv arguments array
+ * @param argc number of program arguments
+ * @param argv program arguments array
  * @return int 1 if arguments are valid or 0 if they not
  */
 int		are_args_valid(const int argc, const char **argv);
 
 // ================ INITIALIZATION ===============
+
+/**
+ * @brief init a data structure
+ * 
+ * @param argc number of program arguments
+ * @param argv program arguments array
+ * @param data pointer to struct to init
+ * @return int 0 on success or -1 on failure
+ */
+int		init_data(int argc, char **argv, t_data **data);
+
+/**
+ * @brief destroy data structure
+ * 
+ * @param data structure to destroy
+ */
+void	destroy_data(t_data *data);
 
 // ================== ALGORITHM ==================
 
