@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/03/31 17:54:23 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/03/31 20:18:19 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,20 @@ SRC				=	main.c \
 					ft_isspace.c \
 					ft_atoi.c \
 					ft_iseven.c \
+					ft_putendl.c \
 					ft_lalloc.c \
 					ft_lfree.c \
 					init_data.c \
 					destroy_data.c \
 					init_philos.c \
 					destroy_philos.c \
-					are_args_valid.c
+					are_args_valid.c \
+					return_error.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -std=c11 -ggdb3
+CFLAGS = -Wall -Wextra -Werror -ggdb3 -pthread
 
 INC = -I .
 

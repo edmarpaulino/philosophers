@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 17:54:33 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:19:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define TIME_TO_EAT 3
 # define TIME_TO_SLEEP 4
 # define TIMES_MUST_EAT 5
+
+# define ARG_ERROR 1
+# define DATA_ERROR 2
+# define PHILOS_ERROR 3
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -132,6 +136,14 @@ int		ft_atoi(const char *nptr);
 int		ft_iseven(int n);
 
 /**
+ * @brief prints the string passed in the informed file descriptor
+ * 
+ * @param str pointer to string to print on file descriptor
+ * @param fd file descriptor to print on
+ */
+void	ft_putendl(char *str, int fd);
+
+/**
  * @brief allocate dynamic memory and add it in a list
  * 
  * @param list list to add the allocated memory
@@ -201,6 +213,15 @@ void	destroy_philos(t_philo *philos);
 // =================== ACTIONS ===================
 
 // ==================== ERRORS ===================
+
+/**
+ * @brief 
+ * 
+ * @param error 
+ * @param data 
+ * @return int 
+ */
+int		return_error(int error, t_data *data);
 
 // ===================== EXIT ====================
 
