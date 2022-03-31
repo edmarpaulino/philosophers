@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 15:29:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:37:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,30 @@ typedef struct s_list
 
 typedef struct s_data
 {
-	int				num_of_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				times_must_eat;
-	int				is_alone;
-	long			first_stamp;
-	pthread_mutex_t	*lock_print;
-	pthread_mutex_t	*lock_dinner;
-	t_list			*free_me;
+	int		num_of_philos;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		times_must_eat;
+	int		is_alone;
+	long	first_stamp;
+	t_mutex	lock_print;
+	t_mutex	lock_dinner;
+	t_mutex	*forks;
+	t_list	*free_me;
 }	t_data;
 
 typedef struct s_philo
 {
-	int				philo_number;
-	int				meal_counter;
-	long			last_meal;
-	pthread_t		philo_thread;
-	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*lock_last_meal;
-	pthread_mutex_t	*lock_meal_counter;
-	t_data			*data;
+	int			philo_number;
+	int			meal_counter;
+	long		last_meal;
+	pthread_t	philo_thread;
+	t_mutex		*right_fork;
+	t_mutex		*left_fork;
+	t_mutex		lock_last_meal;
+	t_mutex		lock_meal_counter;
+	t_data		*data;
 }	t_philo;
 
 // ==================== UTILS ====================
@@ -170,6 +171,22 @@ int		init_data(int argc, char **argv, t_data **data);
  * @param data structure to destroy
  */
 void	destroy_data(t_data *data);
+
+/**
+ * @brief init a philosopher array of structures
+ * 
+ * @param philos array of philosopher structures
+ * @param data struct that contains shared values
+ * @return int 0 on success or -1 on failure
+ */
+int		init_philos(t_philo **philos, t_data *data);
+
+/**
+ * @brief destroy philosopher array and data structure
+ * 
+ * @param philos philosopher array
+ */
+void	destroy_philos(t_philo *philos);
 
 // ================== ALGORITHM ==================
 

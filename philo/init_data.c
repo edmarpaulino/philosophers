@@ -6,14 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:50:59 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 15:30:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:00:23 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief allocate memory for mutexes and init them
+ * @brief init data mutexes
  * 
  * @param data structure that contains shared values
  * @return int 0 on success or -1 on failure
@@ -35,23 +35,25 @@ int	init_data(int argc, char **argv, t_data **data)
 	(*data)->is_alone = ((*data)->num_of_philos == 1);
 	(*data)->first_stamp = 0;
 	(*data)->free_me = NULL;
-	(*data)->lock_print = NULL;
-	(*data)->lock_dinner = NULL;
 	return (init_data_mutexes(*data));
 }
 
 static int	init_data_mutexes(t_data *data)
 {
-	data->lock_print = (t_mutex *)ft_lalloc(&data->free_me, sizeof(t_mutex));
-	if (!data->lock_print)
+	int		i;
+	size_t	array_size;
+
+	pthread_mutex_init(&data->lock_print, NULL);
+	pthread_mutex_init(&data->lock_dinner, NULL);
+	array_size = sizeof(t_mutex) * data->num_of_philos;
+	data->forks = (t_mutex *)ft_lalloc(&data->free_me, array_size);
+	if (!data->forks)
 		return (-1);
-	data->lock_dinner = (t_mutex *)ft_lalloc(&data->free_me, sizeof(t_mutex));
-	if (!data->lock_dinner)
+	i = 0;
+	while (i < data->num_of_philos)
 	{
-		data->lock_print = NULL;
-		return (-1);
+		pthread_mutex_init(&data->forks[i], NULL);
+		i++;
 	}
-	pthread_mutex_init(data->lock_print, NULL);
-	pthread_mutex_init(data->lock_dinner, NULL);
 	return (0);
 }

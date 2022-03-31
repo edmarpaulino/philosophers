@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/03/31 15:29:05 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/03/31 17:23:34 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC				=	main.c \
 					ft_lfree.c \
 					init_data.c \
 					destroy_data.c \
+					init_philos.c \
+					destroy_philos.c \
 					are_args_valid.c
 
 OBJ = $(SRC:.c=.o)
