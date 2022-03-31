@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/03/31 17:23:34 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/03/31 17:54:23 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC				=	main.c \
 					ft_strlen.c \
 					ft_isspace.c \
 					ft_atoi.c \
+					ft_iseven.c \
 					ft_lalloc.c \
 					ft_lfree.c \
 					init_data.c \

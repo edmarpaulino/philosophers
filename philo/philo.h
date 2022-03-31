@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 17:37:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:54:33 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,14 @@ int		ft_isspace(int c);
  * @return int the converted value
  */
 int		ft_atoi(const char *nptr);
+
+/**
+ * @brief checks if the value is even
+ * 
+ * @param n value to check if is even
+ * @return int 1 if it is or 0 if it is not
+ */
+int		ft_iseven(int n);
 
 /**
  * @brief allocate dynamic memory and add it in a list
