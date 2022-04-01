@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 15:25:35 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 18:37:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_data
 	int			time_to_sleep;
 	int			times_must_eat;
 	int			is_alone;
+	int			dinner_is_over;
 	long		first_timestamp;
 	t_mutex		lock_print;
 	t_mutex		lock_dinner;
@@ -258,6 +259,15 @@ long	get_timestamp(void);
  * @return int 
  */
 int		start_philo(t_philo *philos);
+
+/**
+ * @brief callback function for waiter thread that will monitoring the
+ * philosophers
+ * 
+ * @param ptr void pointer
+ * @return void* void pointer
+ */
+void	*waiter_algorithm(void *ptr);
 
 // =================== ACTIONS ===================
 

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 15:00:27 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:09:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ static int	join_philo_threads(t_philo *philos);
  */
 static void	*philo_actions(void *ptr);
 
-/**
- * @brief callback function to execute waiter algorithm
- * 
- * @param ptr void pointer
- * @return void* void pointer
- */
-static void	*waiter_actions(void *ptr);
-
 int	start_philo(t_philo *philos)
 {
 	pthread_t	waiter;
@@ -53,7 +45,7 @@ int	start_philo(t_philo *philos)
 		return (-1);
 	if (create_philo_threads(philos))
 		return (-1);
-	if (pthread_create(&waiter, NULL, &waiter_actions, philos))
+	if (pthread_create(&waiter, NULL, &waiter_algorithm, philos))
 		return (-1);
 	if (join_philo_threads(philos))
 		return (-1);
@@ -101,17 +93,6 @@ static void	*philo_actions(void *ptr)
 	philo = (t_philo *)ptr;
 	pthread_mutex_lock(&philo->data->lock_print);
 	printf("I'm the philosopher number %d\n", philo->number);
-	pthread_mutex_unlock(&philo->data->lock_print);
-	return (NULL);
-}
-
-static void	*waiter_actions(void *ptr)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)ptr;
-	pthread_mutex_lock(&philo->data->lock_print);
-	printf("I'm the waiter\n");
 	pthread_mutex_unlock(&philo->data->lock_print);
 	return (NULL);
 }

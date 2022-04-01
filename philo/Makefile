@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/01 15:28:56 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/01 17:29:32 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC				=	main.c \
 					start_philo.c \
 					second_converters.c \
 					get_timestamp.c \
-					print_philo_actions.c
+					print_philo_action.c \
+					waiter_algorithm.c
 
 OBJ = $(SRC:.c=.o)
 
