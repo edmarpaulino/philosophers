@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 19:19:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 10:53:47 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,29 +67,29 @@ typedef struct s_list
 
 typedef struct s_data
 {
-	int		num_of_philos;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		times_must_eat;
-	int		is_alone;
-	long	first_stamp;
-	t_mutex	lock_print;
-	t_mutex	lock_dinner;
-	t_mutex	*forks;
-	t_list	*free_me;
+	int			num_of_philos;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			times_must_eat;
+	int			is_alone;
+	long		first_stamp;
+	t_mutex		lock_print;
+	t_mutex		lock_dinner;
+	t_mutex		*forks;
+	t_list		*free_me;
 }	t_data;
 
 typedef struct s_philo
 {
-	int			philo_number;
-	int			meal_counter;
+	int			number;
+	int			total_meals;
 	long		last_meal;
-	pthread_t	philo_thread;
+	pthread_t	thread;
 	t_mutex		*right_fork;
 	t_mutex		*left_fork;
 	t_mutex		lock_last_meal;
-	t_mutex		lock_meal_counter;
+	t_mutex		lock_total_meals;
 	t_data		*data;
 }	t_philo;
 
@@ -210,16 +210,19 @@ void	destroy_philos(t_philo *philos);
 
 // ================== ALGORITHM ==================
 
+int		start_philo(t_philo *philos);
+
 // =================== ACTIONS ===================
 
 // ==================== ERRORS ===================
 
 /**
- * @brief 
+ * @brief print an error message through error code and destroy data struct
+ * if necessary
  * 
- * @param error 
- * @param data 
- * @return int 
+ * @param error error code
+ * @param data data struct to destroy
+ * @return int error code
  */
 int		return_error(int error, t_data *data);
 
