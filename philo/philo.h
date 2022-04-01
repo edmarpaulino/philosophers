@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 10:53:47 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 11:00:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define ARG_ERROR 1
 # define DATA_ERROR 2
 # define PHILOS_ERROR 3
+# define ALGO_ERROR 4
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -218,13 +219,14 @@ int		start_philo(t_philo *philos);
 
 /**
  * @brief print an error message through error code and destroy data struct
- * if necessary
+ * or philos array if necessary
  * 
  * @param error error code
  * @param data data struct to destroy
+ * @param philos philosophers array
  * @return int error code
  */
-int		return_error(int error, t_data *data);
+int		return_error(int error, t_data *data, t_philo *philos);
 
 // ===================== EXIT ====================
 
