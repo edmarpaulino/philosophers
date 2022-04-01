@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 10:54:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:00:27 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	start_philo(t_philo *philos)
 {
 	pthread_t	waiter;
 
+	philos[0].data->first_timestamp = get_timestamp();
+	if (philos[0].data->first_timestamp == -1)
+		return (-1);
 	if (create_philo_threads(philos))
 		return (-1);
 	if (pthread_create(&waiter, NULL, &waiter_actions, philos))

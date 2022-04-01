@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:53:29 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:25:35 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 
 # define ONE_THOUSAND 1000
 # define ONE_MILLION 1000000
+
+# define PHILO_TAKEN_A_FORK 1
+# define PHILO_IS_EATING 2
+# define PHILO_IS_SLEEPING 3
+# define PHILO_IS_THINKING 4
+# define PHILO_DIED 5
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -77,7 +83,7 @@ typedef struct s_data
 	int			time_to_sleep;
 	int			times_must_eat;
 	int			is_alone;
-	long		first_stamp;
+	long		first_timestamp;
 	t_mutex		lock_print;
 	t_mutex		lock_dinner;
 	t_mutex		*forks;
@@ -254,6 +260,14 @@ long	get_timestamp(void);
 int		start_philo(t_philo *philos);
 
 // =================== ACTIONS ===================
+
+/**
+ * @brief print philosopher action trough action code
+ * 
+ * @param philo pointer to the philosopher struct
+ * @param action_code action code
+ */
+void	print_philo_action(t_philo *philo, int action_code);
 
 // ==================== ERRORS ===================
 

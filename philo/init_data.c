@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:50:59 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 17:00:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:59:07 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	init_data(int argc, char **argv, t_data **data)
 	if (argc == 6)
 		(*data)->times_must_eat = ft_atoi(argv[TIMES_MUST_EAT]);
 	(*data)->is_alone = ((*data)->num_of_philos == 1);
-	(*data)->first_stamp = 0;
+	(*data)->first_timestamp = 0;
 	(*data)->free_me = NULL;
 	return (init_data_mutexes(*data));
 }
