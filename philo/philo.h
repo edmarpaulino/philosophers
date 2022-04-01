@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 11:00:42 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:53:29 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define DATA_ERROR 2
 # define PHILOS_ERROR 3
 # define ALGO_ERROR 4
+
+# define ONE_THOUSAND 1000
+# define ONE_MILLION 1000000
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -209,8 +212,45 @@ int		init_philos(t_philo **philos, t_data *data);
  */
 void	destroy_philos(t_philo *philos);
 
+/**
+ * @brief converts from microseconds to milliseconds
+ * 
+ * @param usec microseconds to convert
+ * @return long converted value
+ */
+long	micro_to_milli(long usec);
+
+/**
+ * @brief convertes from milliseconds to microseconds
+ * 
+ * @param msec milliseconds to convert
+ * @return long converted value
+ */
+long	milli_to_micro(long msec);
+
+/**
+ * @brief converts from seconds to microseconds
+ * 
+ * @param sec seconds to convert
+ * @return long converted value
+ */
+long	sec_to_micro(long sec);
+
+/**
+ * @brief Get the current timestamp in milliseconds
+ * 
+ * @return long current timestamp on success or -1 on failure
+ */
+long	get_timestamp(void);
+
 // ================== ALGORITHM ==================
 
+/**
+ * @brief 
+ * 
+ * @param philos 
+ * @return int 
+ */
 int		start_philo(t_philo *philos);
 
 // =================== ACTIONS ===================

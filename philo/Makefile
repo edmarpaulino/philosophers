@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/01 09:36:37 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/01 14:52:21 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SRC				=	main.c \
 					destroy_philos.c \
 					are_args_valid.c \
 					return_error.c \
-					start_philo.c
+					start_philo.c \
+					second_converters.c \
+					get_timestamp.c
 
 OBJ = $(SRC:.c=.o)
 
