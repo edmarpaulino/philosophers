@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:07:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 20:42:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:21:54 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*waiter_algorithm(void *ptr)
 				return (NULL);
 			i++;
 		}
-		usleep(milli_to_micro(1));
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -55,20 +55,19 @@ static int	all_philos_ate(t_philo *philos)
 {
 	int	i;
 	int	arr_len;
+	int	total_meals;
 
 	i = 0;
 	arr_len = philos[i].data->num_of_philos;
-	pthread_mutex_lock(&philos[i].lock_total_meals);
 	while (i < arr_len)
 	{
-		if (philos[i].total_meals != philos[i].data->times_must_eat)
-		{
-			pthread_mutex_unlock(&philos[i].lock_total_meals);
+		pthread_mutex_lock(&philos[i].lock_total_meals);
+		total_meals = philos[i].total_meals;
+		pthread_mutex_unlock(&philos[i].lock_total_meals);
+		if (total_meals != philos[i].data->times_must_eat)
 			return (0);
-		}
 		i++;
 	}
-	pthread_mutex_unlock(&philos[i].lock_total_meals);
 	return (1);
 }
 

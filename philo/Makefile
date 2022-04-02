@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/01 20:18:24 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/02 11:39:50 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ SRC				=	main.c \
 					are_args_valid.c \
 					return_error.c \
 					start_philo.c \
-					second_converters.c \
 					get_timestamp.c \
 					print_philo_action.c \
 					waiter_algorithm.c \
@@ -61,15 +60,7 @@ fclean: clean
 
 re: fclean all
 
-############ REMOVE ##############
-run: $(NAME)
-	./$(NAME) 5 1000 200 300 10
-
-test: $(NAME)
-	./test.sh
-
 norm:
 	norminette
-##################################
 
-.PHONY: all clean fclean re run norm
+.PHONY: all clean fclean re norm

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:17:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 20:58:45 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:26:39 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ static void	go_sleep(t_philo *philo);
  * 
  * @param philo 
  */
-static void	go_thinking(t_philo *philo);
+static void	go_think(t_philo *philo);
 
 void	*philo_algorithm(void *ptr)
 {
 	t_philo	*philo;
+	int		total_meals;
 
 	philo = (t_philo *)ptr;
-	if (ft_iseven(philo->number))
+	if (philo->number % 2 == 0)
 		usleep(700);
 	if (philo->data->is_alone)
 	{
@@ -63,15 +64,13 @@ void	*philo_algorithm(void *ptr)
 	while (!dinner_is_over(philo))
 	{
 		go_eat(philo);
-		go_sleep(philo);
 		pthread_mutex_lock(&philo->lock_total_meals);
-		if (philo->total_meals == philo->data->times_must_eat)
-		{
-			pthread_mutex_unlock(&philo->lock_total_meals);
-			return (NULL);
-		}
+		total_meals = philo->total_meals;
 		pthread_mutex_unlock(&philo->lock_total_meals);
-		go_thinking(philo);
+		if (total_meals == philo->data->times_must_eat)
+			return (NULL);
+		go_sleep(philo);
+		go_think(philo);
 	}
 	return (NULL);
 }
@@ -90,32 +89,34 @@ static int	dinner_is_over(t_philo *philo)
 static void	go_eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
+	print_philo_action(philo, PHILO_TAKEN_A_FORK);
 	pthread_mutex_lock(philo->left_fork);
+	print_philo_action(philo, PHILO_TAKEN_A_FORK);
 	if (dinner_is_over(philo))
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		pthread_mutex_unlock(philo->left_fork);
 		return ;
 	}
-	print_philo_action(philo, PHILO_TAKEN_A_FORK);
-	print_philo_action(philo, PHILO_TAKEN_A_FORK);
 	print_philo_action(philo, PHILO_IS_EATING);
 	pthread_mutex_lock(&philo->lock_last_meal);
 	philo->last_meal = get_timestamp();
 	pthread_mutex_unlock(&philo->lock_last_meal);
-	usleep(milli_to_micro(philo->data->time_to_eat));
+	usleep(philo->data->time_to_eat);
+	pthread_mutex_lock(&philo->lock_total_meals);
+	philo->total_meals++;
+	pthread_mutex_unlock(&philo->lock_total_meals);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
-	philo->total_meals++;
 }
 
 static void	go_sleep(t_philo *philo)
 {
 	print_philo_action(philo, PHILO_IS_SLEEPING);
-	usleep(milli_to_micro(philo->data->time_to_sleep));
+	usleep(philo->data->time_to_sleep);
 }
 
-static void	go_thinking(t_philo *philo)
+static void	go_think(t_philo *philo)
 {
 	print_philo_action(philo, PHILO_IS_THINKING);
 	usleep(500);

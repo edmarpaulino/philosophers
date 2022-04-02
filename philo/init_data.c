@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:50:59 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 17:18:38 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 10:24:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	init_data(int argc, char **argv, t_data **data)
 		return (-1);
 	(*data)->num_of_philos = ft_atoi(argv[NUM_OF_PHILOS]);
 	(*data)->time_to_die = ft_atoi(argv[TIME_TO_DIE]);
-	(*data)->time_to_eat = ft_atoi(argv[TIME_TO_EAT]);
-	(*data)->time_to_sleep = ft_atoi(argv[TIME_TO_SLEEP]);
+	(*data)->time_to_eat = ft_atoi(argv[TIME_TO_EAT]) * 1000;
+	(*data)->time_to_sleep = ft_atoi(argv[TIME_TO_SLEEP]) * 1000;
 	(*data)->times_must_eat = -1;
 	if (argc == 6)
 		(*data)->times_must_eat = ft_atoi(argv[TIMES_MUST_EAT]);

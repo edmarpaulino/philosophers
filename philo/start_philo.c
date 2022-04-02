@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 19:22:59 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:28:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static int	create_philo_threads(t_philo *philos)
 	arr_len = philos[i].data->num_of_philos;
 	while (i < arr_len)
 	{
-		if (pthread_create(&philos[i].thread, NULL, &philo_algorithm, &philos[i]))
+		if (pthread_create(&philos[i].thread, NULL, \
+							&philo_algorithm, &philos[i]))
 			return (-1);
 		i++;
 	}

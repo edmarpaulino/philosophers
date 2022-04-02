@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 20:17:58 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:40:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ typedef struct s_list
 typedef struct s_data
 {
 	int			num_of_philos;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
+	long		time_to_die;
+	long		time_to_eat;
+	long		time_to_sleep;
 	int			times_must_eat;
 	int			is_alone;
 	int			dinner_is_over;
@@ -220,30 +220,6 @@ int		init_philos(t_philo **philos, t_data *data);
 void	destroy_philos(t_philo *philos);
 
 /**
- * @brief converts from microseconds to milliseconds
- * 
- * @param usec microseconds to convert
- * @return long converted value
- */
-long	micro_to_milli(long usec);
-
-/**
- * @brief convertes from milliseconds to microseconds
- * 
- * @param msec milliseconds to convert
- * @return long converted value
- */
-long	milli_to_micro(long msec);
-
-/**
- * @brief converts from seconds to microseconds
- * 
- * @param sec seconds to convert
- * @return long converted value
- */
-long	sec_to_micro(long sec);
-
-/**
  * @brief Get the current timestamp in milliseconds
  * 
  * @return long current timestamp on success or -1 on failure
@@ -269,8 +245,19 @@ int		start_philo(t_philo *philos);
  */
 void	*waiter_algorithm(void *ptr);
 
+/**
+ * @brief 
+ * 
+ * @param ptr 
+ * @return void* 
+ */
 void	*philo_algorithm(void *ptr);
 
+/**
+ * @brief 
+ * 
+ * @param philo 
+ */
 void	go_eat_alone(t_philo *philo);
 
 // =================== ACTIONS ===================
