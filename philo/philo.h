@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 11:46:45 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 12:01:15 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define YELLOW "\033[1;33m"
 # define GREEN "\033[0;32m"
 # define CYAN "\033[0;36m"
-# define RESET "\033[0m"
+# define RESET "\033[0m\n"
 
 # include <string.h>
 // memset

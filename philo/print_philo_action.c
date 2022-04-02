@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:10:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 20:48:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 12:01:34 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_philo_action(t_philo *philo, int action_code)
 		else if (action_code == PHILO_IS_THINKING)
 			printf("%5ld %3d is thinking\n", timestamp, philo->number);
 		else if (action_code == PHILO_DIED)
-			printf(RED "%5ld %3d died\n" RESET, timestamp, philo->number);
+			printf(RED "%5ld %3d died" RESET, timestamp, philo->number);
 	}
 	pthread_mutex_unlock(&philo->data->lock_dinner);
 	pthread_mutex_unlock(&philo->data->lock_print);
