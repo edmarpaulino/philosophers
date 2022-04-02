@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:07:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 18:24:24 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:42:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ static int	is_dead(t_philo *philo)
 	since_last_meal = get_timestamp() - philo->last_meal;
 	if (since_last_meal <= philo->data->time_to_die)
 		return (0);
+	print_philo_action(philo, PHILO_DIED);
 	pthread_mutex_lock(&philo->data->lock_dinner);
 	philo->data->dinner_is_over = 1;
 	pthread_mutex_unlock(&philo->data->lock_dinner);
-	print_philo_action(&philo, PHILO_DIED);
 	return (1);
 }

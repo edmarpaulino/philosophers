@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 15:37:16 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 10:30:40 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:37:14 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,9 @@ int	init_philos(t_philo **philos, t_data *data)
 	{
 		(*philos)[i].number = i + 1;
 		(*philos)[i].total_meals = 0;
-		(*philos)[i].last_meal = 0;
+		(*philos)[i].last_meal = get_timestamp();
 		(*philos)[i].right_fork = &data->forks[i];
-		if (i == data->num_of_philos - 1)
-			(*philos)[i].left_fork = &data->forks[0];
-		else
-			(*philos)[i].left_fork = &data->forks[i + 1];
+		(*philos)[i].left_fork = &data->forks[(i + 1) % data->num_of_philos];
 		pthread_mutex_init(&(*philos)[i].lock_last_meal, NULL);
 		pthread_mutex_init(&(*philos)[i].lock_total_meals, NULL);
 		(*philos)[i].data = data;

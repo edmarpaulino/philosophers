@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 16:09:06 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:22:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,6 @@ static int	create_philo_threads(t_philo *philos);
  * @return int 0 on success or -1 on failure
  */
 static int	join_philo_threads(t_philo *philos);
-
-/**
- * @brief callback function to execute philosophers algorithm
- * 
- * @param ptr void pointer
- * @return void* void pointer
- */
-static void	*philo_actions(void *ptr);
 
 int	start_philo(t_philo *philos)
 {
@@ -63,7 +55,7 @@ static int	create_philo_threads(t_philo *philos)
 	arr_len = philos[i].data->num_of_philos;
 	while (i < arr_len)
 	{
-		if (pthread_create(&philos[i].thread, NULL, &philo_actions, &philos[i]))
+		if (pthread_create(&philos[i].thread, NULL, &philo_algorithm, &philos[i]))
 			return (-1);
 		i++;
 	}
@@ -84,15 +76,4 @@ static int	join_philo_threads(t_philo *philos)
 		i++;
 	}
 	return (0);
-}
-
-static void	*philo_actions(void *ptr)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)ptr;
-	pthread_mutex_lock(&philo->data->lock_print);
-	printf("I'm the philosopher number %d\n", philo->number);
-	pthread_mutex_unlock(&philo->data->lock_print);
-	return (NULL);
 }

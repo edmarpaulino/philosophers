@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/01 18:37:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:17:58 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,10 @@ int		start_philo(t_philo *philos);
  * @return void* void pointer
  */
 void	*waiter_algorithm(void *ptr);
+
+void	*philo_algorithm(void *ptr);
+
+void	go_eat_alone(t_philo *philo);
 
 // =================== ACTIONS ===================
 
