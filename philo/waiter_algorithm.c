@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:07:47 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 11:21:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:55:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ static int	is_dead(t_philo *philo)
 {
 	long	since_last_meal;
 
+	pthread_mutex_lock(&philo->lock_last_meal);
 	since_last_meal = get_timestamp() - philo->last_meal;
+	pthread_mutex_unlock(&philo->lock_last_meal);
 	if (since_last_meal <= philo->data->time_to_die)
 		return (0);
 	print_philo_action(philo, PHILO_DIED);

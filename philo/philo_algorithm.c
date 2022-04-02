@@ -6,45 +6,38 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:17:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 11:26:39 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:59:08 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief 
+ * @brief checks if the dinner is over
  * 
- * @param philo 
- * @return int 
+ * @param philo pointer to philosopher struct
+ * @return int 1 if is over or 0 if is not
  */
 static int	dinner_is_over(t_philo *philo);
 
 /**
- * @brief 
+ * @brief eat action for philosopher
  * 
- * @param philo 
+ * @param philo pointer to philosopher struct
  */
 static void	go_eat(t_philo *philo);
 
 /**
- * @brief 
+ * @brief sleep action for philosopher
  * 
- * @param philo 
- */
-static void	go_eat(t_philo *philo);
-
-/**
- * @brief 
- * 
- * @param philo 
+ * @param philo pointer to philosopher struct
  */
 static void	go_sleep(t_philo *philo);
 
 /**
- * @brief 
+ * @brief think action for philosopher
  * 
- * @param philo 
+ * @param philo pointer to philosopher struct
  */
 static void	go_think(t_philo *philo);
 

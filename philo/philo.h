@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 11:40:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:46:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # define DATA_ERROR 2
 # define PHILOS_ERROR 3
 # define ALGO_ERROR 4
-
-# define ONE_THOUSAND 1000
-# define ONE_MILLION 1000000
 
 # define PHILO_TAKEN_A_FORK 1
 # define PHILO_IS_EATING 2
@@ -229,10 +226,10 @@ long	get_timestamp(void);
 // ================== ALGORITHM ==================
 
 /**
- * @brief 
+ * @brief start threads of all philosophers and the waiter
  * 
- * @param philos 
- * @return int 
+ * @param philos philosophers array
+ * @return int 0 on success or -1 on failure
  */
 int		start_philo(t_philo *philos);
 
@@ -241,22 +238,22 @@ int		start_philo(t_philo *philos);
  * philosophers
  * 
  * @param ptr void pointer
- * @return void* void pointer
+ * @return void* void NULL
  */
 void	*waiter_algorithm(void *ptr);
 
 /**
- * @brief 
+ * @brief callback function for philosophers execution their actions
  * 
- * @param ptr 
- * @return void* 
+ * @param ptr void pointer
+ * @return void* NULL
  */
 void	*philo_algorithm(void *ptr);
 
 /**
- * @brief 
+ * @brief function when have only one philosopher to execute their actions
  * 
- * @param philo 
+ * @param philo philosophers array - in this case with one element
  */
 void	go_eat_alone(t_philo *philo);
 
