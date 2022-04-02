@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 12:01:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/02 12:09:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,13 +249,6 @@ void	*waiter_algorithm(void *ptr);
  * @return void* NULL
  */
 void	*philo_algorithm(void *ptr);
-
-/**
- * @brief function when have only one philosopher to execute their actions
- * 
- * @param philo philosophers array - in this case with one element
- */
-void	go_eat_alone(t_philo *philo);
 
 // =================== ACTIONS ===================
 
