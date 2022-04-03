@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:03:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:23:38 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:51:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	return_error(int error, t_data *data)
 	else if (error == PHILOS_ERROR)
 		ft_putstr_fd(RED "Error: Failed to create philosophers array" RESET, 2);
 	else if (error == ALGO_ERROR)
-		ft_putstr_fd(RED "Error: Failed to exec philosophers algorithm" RESET, 2);
+		ft_putstr_fd(RED "Error: Failed to exec philo algorithm" RESET, 2);
 	destroy_data(data);
 	return (error);
 }
