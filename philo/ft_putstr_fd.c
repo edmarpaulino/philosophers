@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:08:23 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/03/31 19:13:00 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:24:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_putendl(char *str, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
 	write(fd, str, ft_strlen(str));
-	write(fd, "\n", 1);
 }

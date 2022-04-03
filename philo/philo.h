@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:41:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 14:48:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:24:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int		ft_iseven(int n);
  * @param str pointer to string to print on file descriptor
  * @param fd file descriptor to print on
  */
-void	ft_putendl(char *str, int fd);
+void	ft_putstr_fd(char *str, int fd);
 
 /**
  * @brief allocate dynamic memory and add it in a list
