@@ -1,6 +1,10 @@
 # IDE Configs
 .vscode
+
 */*.o
 */*.out
 */*.a
+*/*.txt
+
+*/philo*
 test.sh
