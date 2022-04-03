@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 15:30:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 10:54:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,26 @@
 # define PHILO_BONUS_H
 
 # define FT_STR_MAX_INT "2147483647"
+
+# define NUM_OF_PHILOS 1
+# define TIME_TO_DIE 2
+# define TIME_TO_EAT 3
+# define TIME_TO_SLEEP 4
+# define TIMES_MUST_EAT 5
+
+# define SEM_FORKS_NAME "/sem_forks"
+# define SEM_LOCK_PRINT_NAME "/sem_lock_print"
+
+# define ARG_ERROR 1
+# define DATA_ERROR 2
+# define PHILOS_ERROR 3
+# define ALGO_ERROR 4
+
+# define PHILO_TAKEN_A_FORK 1
+# define PHILO_IS_EATING 2
+# define PHILO_IS_SLEEPING 3
+# define PHILO_IS_THINKING 4
+# define PHILO_DIED 5
 
 # define RED "\033[0;31m"
 # define YELLOW "\033[1;33m"
@@ -72,6 +92,30 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_data
+{
+	int			num_of_philos;
+	long		time_to_die;
+	long		time_to_eat;
+	long		time_to_sleep;
+	int			times_must_eat;
+	int			is_alone;
+	int			dinner_is_over;
+	long		first_timestamp;
+	sem_t		*forks;
+	sem_t		*lock_print;
+	t_list		*free_me;
+}	t_data;
+
+typedef struct s_philo
+{
+	int			number;
+	int			total_meals;
+	long		last_meal;
+	int			pid;
+	t_data		*data;
+}	t_philo;
 
 // ==================== UTILS ====================
 
@@ -152,5 +196,24 @@ void	ft_lfree(t_list *list);
  * @return int 1 if arguments are valid or 0 if they not
  */
 int		are_args_valid(const int argc, const char **argv);
+
+// ================ INITIALIZATION ===============
+
+/**
+ * @brief init a data structure
+ * 
+ * @param argc number of program arguments
+ * @param argv program arguments array
+ * @param data pointer to struct to init
+ * @return int 0 on success or -1 on failure
+ */
+int		init_data(int argc, char **argv, t_data **data);
+
+/**
+ * @brief destroy data structure
+ * 
+ * @param data struct to destroy
+ */
+void	destroy_data(t_data *data);
 
 #endif

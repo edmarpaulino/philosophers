@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/02 15:30:30 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/03 10:44:59 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,18 @@
 
 NAME			=	philo_bonus
 
-SRC				=	main.c \
-					ft_isdigit.c \
-					ft_strlen.c \
-					ft_isspace.c \
-					ft_atoi.c \
-					ft_iseven.c \
-					ft_putendl.c \
-					ft_lalloc.c \
-					ft_lfree.c \
-					are_args_valid.c
+SRC				=	main_bonus.c \
+					ft_isdigit_bonus.c \
+					ft_strlen_bonus.c \
+					ft_isspace_bonus.c \
+					ft_atoi_bonus.c \
+					ft_iseven_bonus.c \
+					ft_putendl_bonus.c \
+					ft_lalloc_bonus.c \
+					ft_lfree_bonus.c \
+					are_args_valid_bonus.c \
+					init_data_bonus.c \
+					destroy_data_bonus.c
 
 OBJ				=	$(SRC:.c=.o)
 
@@ -41,10 +43,10 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 clean:
-	@rm $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	@rm $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
