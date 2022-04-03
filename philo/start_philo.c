@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:02:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 15:48:03 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	start_philo(t_philo *philos)
 
 	if (philos[0].data->times_must_eat == 0)
 		return (0);
-	// philos[0].data->first_timestamp = get_timestamp();
 	if (philos[0].data->first_timestamp == -1)
 		return (-1);
 	if (create_philo_threads(philos))

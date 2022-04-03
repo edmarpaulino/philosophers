@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:17:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/02 14:04:32 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:04:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ static int	dinner_is_over(t_philo *philo);
  * @param philo pointer to philosopher struct
  */
 static void	go_eat(t_philo *philo);
-
-/**
- * @brief take forks to eat
- * 
- * @param philo pointer to philosopher struct
- * @return int 0 on success or -1 if dinner is over
- */
-static int	take_forks(t_philo *philo);
 
 void	*philo_algorithm(void *ptr)
 {
@@ -91,8 +83,16 @@ static int	dinner_is_over(t_philo *philo)
 
 static void	go_eat(t_philo *philo)
 {
-	if (take_forks(philo))
+	pthread_mutex_lock(philo->right_fork);
+	print_philo_action(philo, PHILO_TAKEN_A_FORK);
+	pthread_mutex_lock(philo->left_fork);
+	print_philo_action(philo, PHILO_TAKEN_A_FORK);
+	if (dinner_is_over(philo))
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
 		return ;
+	}
 	print_philo_action(philo, PHILO_IS_EATING);
 	pthread_mutex_lock(&philo->lock_last_meal);
 	philo->last_meal = get_timestamp();
@@ -103,25 +103,4 @@ static void	go_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->lock_total_meals);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
-}
-
-static int	take_forks(t_philo *philo)
-{
-	if (philo->number % 2 == 0)
-		pthread_mutex_lock(philo->right_fork);
-	else
-		pthread_mutex_lock(philo->left_fork);
-	print_philo_action(philo, PHILO_TAKEN_A_FORK);
-	if (philo->number % 2 == 0)
-		pthread_mutex_lock(philo->left_fork);
-	else
-		pthread_mutex_lock(philo->right_fork);
-	print_philo_action(philo, PHILO_TAKEN_A_FORK);
-	if (dinner_is_over(philo))
-	{
-		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
-		return (-1);
-	}
-	return (0);
 }

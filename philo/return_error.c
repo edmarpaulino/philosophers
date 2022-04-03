@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:03:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:25:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 15:44:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	return_error(int error, t_data *data, t_philo *philos)
 	}
 	else if (error == ALGO_ERROR)
 	{
-		ft_putstr_fd(RED "Error: Failed to exec philosophers algorithm" RESET, 2);
+		ft_putstr_fd(RED "Error: Failed to exec philo algorithm" RESET, 2);
 		destroy_philos(philos);
 	}
 	return (error);
