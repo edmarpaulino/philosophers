@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/03 10:44:59 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/03 11:08:31 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC				=	main_bonus.c \
 					ft_lfree_bonus.c \
 					are_args_valid_bonus.c \
 					init_data_bonus.c \
-					destroy_data_bonus.c
+					destroy_data_bonus.c \
+					init_philos_bonus.c
 
 OBJ				=	$(SRC:.c=.o)
 

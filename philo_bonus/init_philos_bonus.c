@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   init_philos_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 15:12:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:12:52 by edpaulin         ###   ########.fr       */
+/*   Created: 2022/04/03 11:00:29 by edpaulin          #+#    #+#             */
+/*   Updated: 2022/04/03 11:13:10 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int argc, char *argv[])
+int	init_philos(t_philo **philos, t_data *data)
 {
-	t_data	*data;
-	t_philo	*philos;
+	size_t	arr_size;
+	int		i;
 
-	if (!are_args_valid((const int)argc, (const char **)argv))
+	arr_size = sizeof(t_philo) * data->num_of_philos;
+	*philos = (t_philo *)ft_lalloc(&data->free_me, arr_size);
+	if (!*philos)
+		return (-1);
+	i = 0;
+	while (i < data->num_of_philos)
 	{
-		printf(RED "Error: invalid arguments" RESET);
-		return (1);
+		(*philos)[i].number = i + 1;
+		(*philos)[i].total_meals = 0;
+		(*philos)[i].last_meal = 0;
+		(*philos)[i].pid = 0;
+		(*philos)[i].data = data;
+		i++;
 	}
-	printf(GREEN "All arguments are valid\n" RESET);
-	init_data(argc, argv, &data);
-	init_philos(&philos, data);
-	destroy_data(data);
 	return (0);
 }

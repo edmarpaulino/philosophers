@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 10:54:25 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:12:39 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,15 @@ int		are_args_valid(const int argc, const char **argv);
  * @return int 0 on success or -1 on failure
  */
 int		init_data(int argc, char **argv, t_data **data);
+
+/**
+ * @brief init philosophers array
+ * 
+ * @param philos pointer to philosophers array
+ * @param data pointer to data struct
+ * @return int 0 on success or -1 on failure
+ */
+int		init_philos(t_philo **philos, t_data *data);
 
 /**
  * @brief destroy data structure
