@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:51:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 15:23:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,18 @@ int		init_philos(t_philo **philos, t_data *data);
 void	destroy_data(t_data *data);
 
 int		start_philo(t_philo *philos);
+
+// =================== ACTIONS ===================
+
+/**
+ * @brief print philosopher action trough action code
+ * 
+ * @param philo pointer to the philosopher struct
+ * @param action_code action code
+ */
+void	print_philo_action(t_philo *philo, int action_code);
+
+void	philo_algorithm(t_philo *philo);
 
 // ==================== ERRORS ===================
 

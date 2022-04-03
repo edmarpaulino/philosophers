@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 11:00:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:13:10 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 15:30:17 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	init_philos(t_philo **philos, t_data *data)
 	{
 		(*philos)[i].number = i + 1;
 		(*philos)[i].total_meals = 0;
-		(*philos)[i].last_meal = 0;
+		(*philos)[i].last_meal = get_timestamp();
 		(*philos)[i].pid = 0;
 		(*philos)[i].data = data;
 		i++;
