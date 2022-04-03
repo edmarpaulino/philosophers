@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:12:39 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:16:52 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,13 @@ void	*ft_lalloc(t_list **list, size_t alloc_size);
  * @param list list of allocated memory
  */
 void	ft_lfree(t_list *list);
+
+/**
+ * @brief Get the current timestamp in milliseconds
+ * 
+ * @return long current timestamp on success or -1 on failure
+ */
+long	get_timestamp(void);
 
 // ================== VALIDATION =================
 
