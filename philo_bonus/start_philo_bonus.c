@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 11:35:27 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 15:36:17 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 17:20:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	start_philo(t_philo *philos)
 	t_data	*data;
 	size_t	arr_size;
 
-	if (philos[0].data->times_must_eat == 0)
+	if (philos->data->times_must_eat == 0)
 		return (0);
-	philos[0].data->first_timestamp = get_timestamp();
-	if (philos[0].data->first_timestamp == -1)
+	if (philos->data->first_timestamp == -1)
 		return (-1);
-	data = philos[0].data;
+	data = philos->data;
 	arr_size = sizeof(int) * data->num_of_philos;
 	pid_arr = (int *)ft_lalloc(&data->free_me, arr_size);
 	if (create_philo_process(philos, pid_arr))
@@ -43,7 +42,7 @@ static int	create_philo_process(t_philo *philos, int *pid_arr)
 	int	i;
 	int	pid;
 
-	arr_len = philos[0].data->num_of_philos;
+	arr_len = philos->data->num_of_philos;
 	i = 0;
 	while (i < arr_len)
 	{
@@ -63,21 +62,13 @@ static int	create_philo_process(t_philo *philos, int *pid_arr)
 
 static int	wait_philo_process(t_philo *philos, int *pid_arr)
 {
-	int	arr_len;
-	int	i;
 	int	status;
 
-	arr_len = philos[0].data->num_of_philos;
-	i = 0;
-	while (i < arr_len)
+	waitpid(-1, &status, 0);
+	if (WEXITSTATUS(status))
 	{
-		waitpid(pid_arr[i], &status, 0);
-		if (status)
-		{
-			kill_all_philosophers(pid_arr, arr_len);
-			return (0);
-		}
-		i++;
+		kill_all_philosophers(pid_arr, philos->data->num_of_philos);
+		return (0);
 	}
 	return (0);
 }

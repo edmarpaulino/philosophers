@@ -6,5 +6,6 @@
 */*.a
 */*.txt
 
-*/philo*
+*/philo
+*/philo_bonus
 test.sh

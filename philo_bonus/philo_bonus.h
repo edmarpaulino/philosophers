@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 15:23:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:17:48 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define SEM_FORKS_NAME "/sem_forks"
 # define SEM_LOCK_PRINT_NAME "/sem_lock_print"
+# define SEM_DINNER_IS_OVER_NAME "/sem_dinner_is_over"
 
 # define ARG_ERROR 1
 # define DATA_ERROR 2
@@ -101,10 +102,10 @@ typedef struct s_data
 	long		time_to_sleep;
 	int			times_must_eat;
 	int			is_alone;
-	int			dinner_is_over;
 	long		first_timestamp;
 	sem_t		*forks;
 	sem_t		*lock_print;
+	sem_t		*dinner_is_over;
 	t_list		*free_me;
 }	t_data;
 
