@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/03 11:16:06 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/03 11:24:05 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ SRC				=	main_bonus.c \
 					ft_isspace_bonus.c \
 					ft_atoi_bonus.c \
 					ft_iseven_bonus.c \
-					ft_putendl_bonus.c \
+					ft_putstr_fd_bonus.c \
 					ft_lalloc_bonus.c \
 					ft_lfree_bonus.c \
 					are_args_valid_bonus.c \
 					init_data_bonus.c \
 					destroy_data_bonus.c \
 					init_philos_bonus.c \
-					get_timestamp_bonus.c
+					get_timestamp_bonus.c \
+					return_error_bonus.c
 
 OBJ				=	$(SRC:.c=.o)
 

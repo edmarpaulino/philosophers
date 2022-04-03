@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:16:52 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:23:51 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ int		ft_iseven(int n);
  * @param str pointer to string to print on file descriptor
  * @param fd file descriptor to print on
  */
-void	ft_putendl(char *str, int fd);
+void	ft_putstr_fd(char *str, int fd);
 
 /**
  * @brief allocate dynamic memory and add it in a list
@@ -231,5 +231,17 @@ int		init_philos(t_philo **philos, t_data *data);
  * @param data struct to destroy
  */
 void	destroy_data(t_data *data);
+
+// ==================== ERRORS ===================
+
+/**
+ * @brief print an error message through error code and destroy data struct
+ * if necessary
+ * 
+ * @param error error code
+ * @param data data struct to destroy
+ * @return int error code
+ */
+int		return_error(int error, t_data *data);
 
 #endif
