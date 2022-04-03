@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 11:35:27 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 17:20:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 18:22:46 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,20 @@ static int	create_philo_process(t_philo *philos, int *pid_arr)
 static int	wait_philo_process(t_philo *philos, int *pid_arr)
 {
 	int	status;
+	int	i;
+	int	arr_len;
 
-	waitpid(-1, &status, 0);
-	if (WEXITSTATUS(status))
+	i = 0;
+	arr_len = philos->data->num_of_philos;
+	while (i < arr_len)
 	{
-		kill_all_philosophers(pid_arr, philos->data->num_of_philos);
-		return (0);
+		waitpid(pid_arr[i], &status, 0);
+		if (WEXITSTATUS(status))
+		{
+			kill_all_philosophers(pid_arr, arr_len);
+			return (0);
+		}
+		i++;
 	}
 	return (0);
 }
