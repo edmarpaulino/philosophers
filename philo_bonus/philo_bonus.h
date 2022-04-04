@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:11:23 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:34:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SEM_FORKS_NAME "/sem_forks"
 # define SEM_LOCK_PRINT_NAME "/sem_lock_print"
 # define SEM_DINNER_IS_OVER_NAME "/sem_dinner_is_over"
+# define SEM_I_AM_DEAD_NAME "/sem_i_am_dead"
 
 # define ARG_ERROR 1
 # define DATA_ERROR 2
@@ -107,7 +108,7 @@ typedef struct s_data
 	sem_t		*forks;
 	sem_t		*lock_print;
 	sem_t		*dinner_is_over;
-	sem_t		*test;
+	sem_t		*i_am_dead;
 	t_list		*free_me;
 }	t_data;
 
