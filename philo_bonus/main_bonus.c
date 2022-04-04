@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:12:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 09:03:27 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 20:12:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ int	main(int argc, char *argv[])
 	t_philo	*philos;
 
 	if (!are_args_valid((const int)argc, (const char **)argv))
-		return (return_error(ARG_ERROR, NULL));
-	if (init_data(argc, argv, &data))
-		return (return_error(DATA_ERROR, data));
-	if (init_philos(&philos, data))
-		return (return_error(PHILOS_ERROR, data));
-	if (start_philo(philos))
-		return (return_error(ALGO_ERROR, data));
-	destroy_data(data, 1);
+		return (1);
+	data = get_data((const int)argc, (const char **)argv);
+	if (!data)
+		return (2);
+	philos = get_philos(data);
+	if (!philos)
+	{
+		destroy_data(data);
+		return (3);
+	}
+	printf("Ok\n");
+	destroy_philos(philos);
 	return (0);
 }
