@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:48:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:12:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:17:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static void	is_dead(t_philo *philo)
 	print_philo_action(philo, PHILO_DIED);
 	destroy_data(philo->data);
 	sem_post(philo->data->dinner_is_over);
-	printf("oia\n");
 }
 
 static void	go_eat(t_philo *philo)
