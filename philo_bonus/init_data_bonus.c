@@ -6,11 +6,19 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:21:20 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:13:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:29:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+
+/**
+ * @brief 
+ * 
+ * @param data 
+ * @return int 
+ */
+static int	init_data_pid_arr(t_data *data);
 
 /**
  * @brief init data semaphores and before init unlink semaphores
@@ -36,10 +44,27 @@ int	init_data(int argc, char **argv, t_data **data)
 	(*data)->is_alone = ((*data)->num_of_philos == 1);
 	(*data)->first_timestamp = get_timestamp();
 	(*data)->free_me = NULL;
-	(*data)->pid_arr = (int *)ft_lalloc(&(*data)->free_me, (*data)->num_of_philos * sizeof(int));
-	if (!(*data)->pid_arr)
+	if (init_data_pid_arr(*data))
 		return (-1);
 	return (init_data_semaphores(*data));
+}
+
+static int	init_data_pid_arr(t_data *data)
+{
+	size_t	arr_size;
+	int		i;
+
+	arr_size = data->num_of_philos * sizeof(int);
+	data->pid_arr = (int *)ft_lalloc(&data->free_me, arr_size);
+	if (!data->pid_arr)
+		return (-1);
+	i = 0;
+	while (i < data->num_of_philos)
+	{
+		data->pid_arr[i] = -1;
+		i++;
+	}
+	return (0);
 }
 
 static int	init_data_semaphores(t_data *data)

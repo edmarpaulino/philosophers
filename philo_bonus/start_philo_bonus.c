@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 11:35:27 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:16:58 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:26:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ static void	*waiter(void *ptr)
 	philos = (t_philo *)ptr;
 	arr_len = philos->data->num_of_philos;
 	i = 0;
-	sem_wait(philos[0].data->dinner_is_over);
+	sem_wait(philos->data->dinner_is_over);
 	while (i < arr_len)
 	{
-		kill(philos->data->pid_arr[i], SIGKILL);
+		if (philos->data->pid_arr[i] != -1)
+			kill(philos->data->pid_arr[i], SIGKILL);
 		i++;
 	}
 	destroy_data(philos->data);

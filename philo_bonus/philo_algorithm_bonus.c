@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:48:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:17:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:30:16 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static void	go_eat_alone(t_philo *philo)
 	print_philo_action(philo, PHILO_TAKEN_A_FORK);
 	usleep(philo->data->time_to_die * 1000);
 	print_philo_action(philo, PHILO_DIED);
-	destroy_data(philo->data);
 	sem_post(philo->data->dinner_is_over);
+	destroy_data(philo->data);
 }
 
 static void	is_dead(t_philo *philo)
@@ -77,8 +77,8 @@ static void	is_dead(t_philo *philo)
 	if (since_last_meal <= philo->data->time_to_die)
 		return ;
 	print_philo_action(philo, PHILO_DIED);
-	destroy_data(philo->data);
 	sem_post(philo->data->dinner_is_over);
+	destroy_data(philo->data);
 }
 
 static void	go_eat(t_philo *philo)
@@ -105,7 +105,7 @@ static void	go_sleep(t_philo *philo)
 	i = 0;
 	while (i < time_to_sleep_ms)
 	{
-		usleep(950);
+		usleep(1000);
 		is_dead(philo);
 		i++;
 	}
