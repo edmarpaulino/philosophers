@@ -6,18 +6,12 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:50:59 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 15:47:40 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 10:40:33 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * @brief init data mutexes
- * 
- * @param data structure that contains shared values
- * @return int 0 on success or -1 on failure
- */
 static int	init_data_mutexes(t_data *data);
 
 int	init_data(int argc, char **argv, t_data **data)

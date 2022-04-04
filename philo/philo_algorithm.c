@@ -6,32 +6,14 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:17:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 16:04:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 10:59:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * @brief function when have only one philosopher to execute their actions
- * 
- * @param philo philosophers array - in this case with one element
- */
 static void	go_eat_alone(t_philo *philo);
-
-/**
- * @brief checks if the dinner is over
- * 
- * @param philo pointer to philosopher struct
- * @return int 1 if is over or 0 if is not
- */
 static int	dinner_is_over(t_philo *philo);
-
-/**
- * @brief eat action for philosopher
- * 
- * @param philo pointer to philosopher struct
- */
 static void	go_eat(t_philo *philo);
 
 void	*philo_algorithm(void *ptr)

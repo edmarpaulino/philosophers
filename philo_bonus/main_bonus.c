@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:12:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 11:36:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 09:03:27 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(int argc, char *argv[])
 		return (return_error(PHILOS_ERROR, data));
 	if (start_philo(philos))
 		return (return_error(ALGO_ERROR, data));
-	destroy_data(data);
+	destroy_data(data, 1);
 	return (0);
 }

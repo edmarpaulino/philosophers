@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/03 15:01:55 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/04 11:01:27 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRC				=	main_bonus.c \
 					ft_strlen_bonus.c \
 					ft_isspace_bonus.c \
 					ft_atoi_bonus.c \
-					ft_iseven_bonus.c \
 					ft_putstr_fd_bonus.c \
 					ft_lalloc_bonus.c \
 					ft_lfree_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 11:35:27 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:42:12 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 09:48:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	create_philo_process(t_philo *philos);
 static void	*waiter(void *ptr);
-static void	exit_program(t_philo *philos);
+static void	*check_dinner_is_over(t_philo *philos);
 
 int	start_philo(t_philo *philos)
 {
@@ -27,7 +27,7 @@ int	start_philo(t_philo *philos)
 		return (-1);
 	if (create_philo_process(philos))
 		return (-1);
-	exit_program(philos);
+	check_dinner_is_over(philos);
 	pthread_join(th, NULL);
 	return (0);
 }
@@ -64,19 +64,19 @@ static void	*waiter(void *ptr)
 	philos = (t_philo *)ptr;
 	arr_len = philos->data->num_of_philos;
 	i = 0;
-	sem_wait(philos->data->i_am_dead);
+	sem_wait(philos->data->i_died);
 	while (i < arr_len)
 	{
 		if (philos->data->pid_arr[i] != -1)
 			kill(philos->data->pid_arr[i], SIGKILL);
 		i++;
 	}
-	destroy_data(philos->data);
+	destroy_data(philos->data, 1);
 	exit(0);
 	return (NULL);
 }
 
-static void	exit_program(t_philo *philos)
+static void	*check_dinner_is_over(t_philo *philos)
 {
 	int	i;
 
@@ -86,5 +86,6 @@ static void	exit_program(t_philo *philos)
 		sem_wait(philos->data->dinner_is_over);
 		i++;
 	}
+	destroy_data(philos->data, DESTROY_SEM);
 	exit(0);
 }

@@ -6,26 +6,13 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 09:25:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 15:48:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 10:41:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * @brief create all philo threads
- * 
- * @param philos array of philosophers
- * @return int 0 on success or -1 on failure
- */
 static int	create_philo_threads(t_philo *philos);
-
-/**
- * @brief join all philo threads
- * 
- * @param philos array of philosophers
- * @return int 0 on success or -1 on failure
- */
 static int	join_philo_threads(t_philo *philos);
 
 int	start_philo(t_philo *philos)

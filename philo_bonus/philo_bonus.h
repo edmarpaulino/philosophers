@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 21:34:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 11:01:32 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SEM_FORKS_NAME "/sem_forks"
 # define SEM_LOCK_PRINT_NAME "/sem_lock_print"
 # define SEM_DINNER_IS_OVER_NAME "/sem_dinner_is_over"
-# define SEM_I_AM_DEAD_NAME "/sem_i_am_dead"
+# define SEM_I_DIED_NAME "/sem_i_died"
 
 # define ARG_ERROR 1
 # define DATA_ERROR 2
@@ -37,13 +37,13 @@
 # define PHILO_IS_THINKING 4
 # define PHILO_DIED 5
 
-# define RED "\033[0;31m"
-# define YELLOW "\033[1;33m"
-# define GREEN "\033[0;32m"
-# define CYAN "\033[0;36m"
-# define RESET "\033[0m\n"
+# define NOT_DESTROY_SEM 0
+# define DESTROY_SEM 1
 
-# include <string.h>
+# define RED "\033[0;31m"
+# define RESET_NL "\033[0m\n"
+
+// # include <string.h>
 // memset
 
 # include <stdio.h>
@@ -108,7 +108,7 @@ typedef struct s_data
 	sem_t		*forks;
 	sem_t		*lock_print;
 	sem_t		*dinner_is_over;
-	sem_t		*i_am_dead;
+	sem_t		*i_died;
 	t_list		*free_me;
 }	t_data;
 
@@ -120,156 +120,21 @@ typedef struct s_philo
 	t_data		*data;
 }	t_philo;
 
-// ==================== UTILS ====================
-
-/**
- * @brief checks for a digit (0 through 9)
- * 
- * @param c character to check if is digit
- * @return int 1 if it is a digit or 0 if it is not
- */
 int		ft_isdigit(int c);
-
-/**
- * @brief calculate the length of a string
- * 
- * @param str string to calculate its length
- * @return size_t number of bytes in the string pointed to str
- */
 size_t	ft_strlen(char *str);
-
-/**
- * @brief checks for white-space characters
- * 
- * @param c character to check if is a white-space
- * @return int 1 if it is a white-space or 0 if it is not
- */
 int		ft_isspace(int c);
-
-/**
- * @brief convert a string to an integer
- * 
- * @param nptr string to convert to an integer
- * @return int the converted value
- */
 int		ft_atoi(const char *nptr);
-
-/**
- * @brief checks if the value is even
- * 
- * @param n value to check if is even
- * @return int 1 if it is or 0 if it is not
- */
-int		ft_iseven(int n);
-
-/**
- * @brief prints the string passed in the informed file descriptor
- * 
- * @param str pointer to string to print on file descriptor
- * @param fd file descriptor to print on
- */
 void	ft_putstr_fd(char *str, int fd);
-
-/**
- * @brief allocate dynamic memory and add it in a list
- * 
- * @param list list to add the allocated memory
- * @param alloc_size size of memory allocation
- * @return void* pointer to the allocated memory or NULL if failed to 
- * allocate memory
- */
 void	*ft_lalloc(t_list **list, size_t alloc_size);
-
-/**
- * @brief free dynamic memory allocated inside the list
- * 
- * @param list list of allocated memory
- */
 void	ft_lfree(t_list *list);
-
-/**
- * @brief Get the current timestamp in milliseconds
- * 
- * @return long current timestamp on success or -1 on failure
- */
 long	get_timestamp(void);
-
-// ================== VALIDATION =================
-
-/**
- * @brief check if arguments are valid for philosophers program, number of
- * philosopher, time to die, time to eat, time to sleep, (optional) number of
- * times each philosopher must eat
- * 
- * @param argc number of program arguments
- * @param argv program arguments array
- * @return int 1 if arguments are valid or 0 if they not
- */
 int		are_args_valid(const int argc, const char **argv);
-
-// ================ INITIALIZATION ===============
-
-/**
- * @brief init a data structure
- * 
- * @param argc number of program arguments
- * @param argv program arguments array
- * @param data pointer to struct to init
- * @return int 0 on success or -1 on failure
- */
 int		init_data(int argc, char **argv, t_data **data);
-
-/**
- * @brief init philosophers array
- * 
- * @param philos pointer to philosophers array
- * @param data pointer to data struct
- * @return int 0 on success or -1 on failure
- */
 int		init_philos(t_philo **philos, t_data *data);
-
-/**
- * @brief destroy data structure
- * 
- * @param data struct to destroy
- */
-void	destroy_data(t_data *data);
-
-/**
- * @brief 
- * 
- * @param philos 
- * @return int 
- */
+void	destroy_data(t_data *data, int sem);
 int		start_philo(t_philo *philos);
-
-// =================== ACTIONS ===================
-
-/**
- * @brief print philosopher action trough action code
- * 
- * @param philo pointer to the philosopher struct
- * @param action_code action code
- */
 void	print_philo_action(t_philo *philo, int action_code);
-
-/**
- * @brief 
- * 
- * @param philo 
- */
 void	philo_algorithm(t_philo *philo);
-
-// ==================== ERRORS ===================
-
-/**
- * @brief print an error message through error code and destroy data struct
- * if necessary
- * 
- * @param error error code
- * @param data data struct to destroy
- * @return int error code
- */
 int		return_error(int error, t_data *data);
 
 #endif
