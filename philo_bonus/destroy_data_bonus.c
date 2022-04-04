@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:37:33 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 16:52:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 18:48:51 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	destroy_data(t_data *data)
 		return ;
 	destroy_semaphore(data->forks, SEM_FORKS_NAME);
 	destroy_semaphore(data->lock_print, SEM_LOCK_PRINT_NAME);
+	destroy_semaphore(data->dinner_is_over, SEM_DINNER_IS_OVER_NAME);
 	ft_lfree(data->free_me);
 	free(data);
 }

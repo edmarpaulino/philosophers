@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:21:20 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 17:22:25 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:13:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	init_data(int argc, char **argv, t_data **data)
 	(*data)->is_alone = ((*data)->num_of_philos == 1);
 	(*data)->first_timestamp = get_timestamp();
 	(*data)->free_me = NULL;
+	(*data)->pid_arr = (int *)ft_lalloc(&(*data)->free_me, (*data)->num_of_philos * sizeof(int));
+	if (!(*data)->pid_arr)
+		return (-1);
 	return (init_data_semaphores(*data));
 }
 
@@ -46,11 +49,15 @@ static int	init_data_semaphores(t_data *data)
 	sem_unlink(SEM_DINNER_IS_OVER_NAME);
 	data->forks = SEM_FAILED;
 	data->lock_print = SEM_FAILED;
+	data->dinner_is_over = SEM_FAILED;
 	data->forks = sem_open(SEM_FORKS_NAME, O_CREAT, 0600, data->num_of_philos);
 	if (data->forks == SEM_FAILED)
 		return (-1);
 	data->lock_print = sem_open(SEM_LOCK_PRINT_NAME, O_CREAT, 0600, 1);
 	if (data->lock_print == SEM_FAILED)
+		return (-1);
+	data->dinner_is_over = sem_open(SEM_DINNER_IS_OVER_NAME, O_CREAT, 0600, 0);
+	if (data->dinner_is_over == SEM_FAILED)
 		return (-1);
 	return (0);
 }

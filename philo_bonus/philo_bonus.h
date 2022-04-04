@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/03 16:17:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:11:23 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,11 @@ typedef struct s_data
 	int			times_must_eat;
 	int			is_alone;
 	long		first_timestamp;
+	int			*pid_arr;
 	sem_t		*forks;
 	sem_t		*lock_print;
 	sem_t		*dinner_is_over;
+	sem_t		*test;
 	t_list		*free_me;
 }	t_data;
 
@@ -114,7 +116,6 @@ typedef struct s_philo
 	int			number;
 	int			total_meals;
 	long		last_meal;
-	int			pid;
 	t_data		*data;
 }	t_philo;
 
@@ -233,6 +234,12 @@ int		init_philos(t_philo **philos, t_data *data);
  */
 void	destroy_data(t_data *data);
 
+/**
+ * @brief 
+ * 
+ * @param philos 
+ * @return int 
+ */
 int		start_philo(t_philo *philos);
 
 // =================== ACTIONS ===================
@@ -245,6 +252,11 @@ int		start_philo(t_philo *philos);
  */
 void	print_philo_action(t_philo *philo, int action_code);
 
+/**
+ * @brief 
+ * 
+ * @param philo 
+ */
 void	philo_algorithm(t_philo *philo);
 
 // ==================== ERRORS ===================
