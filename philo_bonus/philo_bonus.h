@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 11:01:32 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 11:20:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ typedef struct s_list
 typedef struct s_data
 {
 	int			num_of_philos;
-	long		time_to_die;
-	long		time_to_eat;
-	long		time_to_sleep;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
 	int			times_must_eat;
 	int			is_alone;
 	long		first_timestamp;

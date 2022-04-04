@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 14:48:39 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 10:32:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 11:20:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	is_dead(t_philo *philo)
 
 static void	go_eat(t_philo *philo)
 {
-	long	i;
+	int	i;
 
 	sem_wait(philo->data->forks);
 	print_philo_action(philo, PHILO_TAKEN_A_FORK);
@@ -91,7 +91,7 @@ static void	go_eat(t_philo *philo)
 
 static void	go_sleep(t_philo *philo)
 {
-	long	i;
+	int	i;
 
 	print_philo_action(philo, PHILO_IS_SLEEPING);
 	i = 0;
