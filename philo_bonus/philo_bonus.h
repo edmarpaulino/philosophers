@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/05 08:48:48 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 10:40:30 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define PHILO_BONUS_H
 
 # define FT_STR_MAX_INT "2147483647"
+
+# define ARG_ERROR 1
+# define DATA_ERROR 2
+# define PHILOS_ERROR 3
+# define ALGO_ERROR 4
 
 # define SEM_FORKS_NAME "/forks"
 # define SEM_LOCK_PRINT_NAME "/lock_print"
@@ -113,6 +118,7 @@ void	*ft_lalloc(t_list **list, size_t alloc_size);
 void	ft_lfree(t_list *list);
 long	get_timestamp(void);
 int		are_args_valid(const int argc, const char **argv);
+int		return_error(int error, t_data *data, t_philo *philos);
 t_data	*get_data(const int argc, const char **argv);
 t_philo	*get_philos(t_data *data);
 void	destroy_data(t_data *data);

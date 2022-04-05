@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:23:31 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/05 08:51:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 10:42:46 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	destroy_semaphores(t_data *data);
 
 void	destroy_data(t_data *data)
 {
+	if (!data)
+		return ;
 	destroy_semaphores(data);
 	free(data->pid_array);
 	free(data);

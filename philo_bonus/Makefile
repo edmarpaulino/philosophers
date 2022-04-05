@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/04 21:35:28 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/05 10:40:53 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC				=	main_bonus.c \
 					ft_lalloc_bonus.c \
 					ft_lfree_bonus.c \
 					are_args_valid_bonus.c \
+					return_error_bonus.c \
 					get_timestamp_bonus.c \
 					get_data_bonus.c \
 					get_philos_bonus.c \
