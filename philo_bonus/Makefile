@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/05 10:40:53 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/05 13:49:29 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+bonus: all
+
 clean:
 	@rm -f $(OBJ)
 
@@ -62,4 +64,4 @@ re: fclean all
 norm:
 	norminette
 
-.PHONY: all clean fclean re norm
+.PHONY: all bonus clean fclean re norm

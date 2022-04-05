@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:09:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/05 11:19:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 20:16:31 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	check_life(t_philo *philo);
 
 void	philo_actions(t_philo *philo)
 {
-	if (philo->num % 2 == 0)
-		usleep(5000);
 	while (1)
 	{
 		go_eat(philo);
@@ -67,6 +65,7 @@ static void	go_think(t_philo *philo)
 	print_philo_action(philo, PHILO_IS_THINKING);
 	while (*(int *)philo->data->forks < 2)
 		check_life(philo);
+	usleep(500);
 }
 
 static void	check_life(t_philo *philo)
