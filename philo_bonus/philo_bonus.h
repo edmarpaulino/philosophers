@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 20:06:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:34:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 # define PHILO_BONUS_H
 
 # define FT_STR_MAX_INT "2147483647"
+
+# define PHILO_TAKEN_A_FORK 1
+# define PHILO_IS_EATING 2
+# define PHILO_IS_SLEEPING 3
+# define PHILO_IS_THINKING 4
+# define PHILO_DIED 5
+
+# define RED "\033[0;31m"
+# define RESET_NL "\033[0m\n"
 
 // # include <string.h>
 // memset
@@ -78,6 +87,8 @@ typedef struct s_data
 	int			*pid_array;
 	sem_t		*forks;
 	sem_t		*lock_print;
+	sem_t		*death;
+	sem_t		*dinner_is_over;
 }	t_data;
 
 typedef struct s_philo
@@ -103,5 +114,9 @@ void	destroy_data(t_data *data);
 void	destroy_philos(t_philo *philos);
 void	destroy_data_child(t_data *data);
 void	destroy_philos_child(t_philo *philos);
+int		start_alone_philo(t_philo *philos);
+int		start_philo_bonus(t_philo *philos);
+void	philo_actions(t_philo *philo);
+void	print_philo_action(t_philo *philo, int action_code);
 
 #endif

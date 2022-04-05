@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   start_alone_philo_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 15:12:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 21:42:37 by edpaulin         ###   ########.fr       */
+/*   Created: 2022/04/04 20:15:28 by edpaulin          #+#    #+#             */
+/*   Updated: 2022/04/04 21:46:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int argc, char *argv[])
-{
-	t_data	*data;
-	t_philo	*philos;
+static void	go_eat_alone(t_philo *philos);
 
-	if (!are_args_valid((const int)argc, (const char **)argv))
-		return (1);
-	data = get_data((const int)argc, (const char **)argv);
-	if (!data)
-		return (2);
-	philos = get_philos(data);
-	if (!philos)
-	{
-		destroy_data(data);
-		return (3);
-	}
-	if (philos->data->num_of_philos == 1)
-		start_alone_philo(philos);
-	else
-		start_philo_bonus(philos);
-	destroy_philos(philos);
+int	start_alone_philo(t_philo *philos)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid == -1)
+		return (-1);
+	if (pid == 0)
+		go_eat_alone(philos);
+	waitpid(-1, NULL, 0);
 	return (0);
+}
+
+static void	go_eat_alone(t_philo *philos)
+{
+	print_philo_action(&philos[0], PHILO_TAKEN_A_FORK);
+	usleep(philos->data->time_to_die * 1000);
+	print_philo_action(&philos[0], PHILO_DIED);
+	destroy_philos_child(philos);
+	exit(0);
 }

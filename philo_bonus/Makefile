@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/04 20:08:38 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/04 21:35:28 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,11 @@ SRC				=	main_bonus.c \
 					destroy_data_bonus.c \
 					destroy_philos_bonus.c \
 					destroy_data_child_bonus.c \
-					destroy_philos_child_bonus.c
+					destroy_philos_child_bonus.c \
+					start_alone_philo_bonus.c \
+					start_philo_bonus.c \
+					print_philo_action_bonus.c \
+					philo_actions_bonus.c
 
 OBJ				=	$(SRC:.c=.o)
 

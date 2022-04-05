@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:06:14 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 20:12:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/04 20:56:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,21 @@ static int	init_data_semaphores(t_data *data)
 {
 	sem_unlink("/forks");
 	sem_unlink("/lock_print");
+	sem_unlink("/death");
+	sem_unlink("/dinner_is_over");
 	data->forks = SEM_FAILED;
 	data->lock_print = SEM_FAILED;
+	data->death = SEM_FAILED;
+	data->dinner_is_over = SEM_FAILED;
 	data->forks = sem_open("/forks", O_CREAT, 0600, data->num_of_philos);
 	if (data->forks == SEM_FAILED)
 		return (-1);
 	data->lock_print = sem_open("/lock_print", O_CREAT, 0600, 1);
 	if (data->lock_print == SEM_FAILED)
 		return (-1);
+	data->death = sem_open("/death", O_CREAT, 0600, 0);
+	if (data->death == SEM_FAILED)
+		return (-1);
+	data->dinner_is_over = sem_open("/dinner_is_over", O_CREAT, 0600, 0);
 	return (0);
 }
