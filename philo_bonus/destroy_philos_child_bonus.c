@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 19:16:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 20:03:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 08:45:29 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	destroy_philos_child(t_philo *philos)
 
 	data = philos->data;
 	free(philos);
-	destroy_data(data);
+	destroy_data_child(data);
 }

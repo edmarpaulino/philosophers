@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:12:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 21:42:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 09:05:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char *argv[])
 
 	if (!are_args_valid((const int)argc, (const char **)argv))
 		return (1);
+	if (argc == 6 && ft_atoi(argv[5]) == 0)
+		return (0);
 	data = get_data((const int)argc, (const char **)argv);
 	if (!data)
 		return (2);

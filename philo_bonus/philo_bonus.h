@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 21:34:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 08:48:48 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define PHILO_BONUS_H
 
 # define FT_STR_MAX_INT "2147483647"
+
+# define SEM_FORKS_NAME "/forks"
+# define SEM_LOCK_PRINT_NAME "/lock_print"
+# define SEM_DEATH_NAME "/death"
+# define SEM_DINNER_IS_OVER_NAME "/dinner_is_over"
 
 # define PHILO_TAKEN_A_FORK 1
 # define PHILO_IS_EATING 2

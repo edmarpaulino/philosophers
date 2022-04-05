@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:09:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/04 21:36:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/05 08:58:32 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	philo_actions(t_philo *philo)
 	{
 		go_eat(philo);
 		if (philo->num_of_meals == philo->data->times_must_eat)
+		{
+			sem_post(philo->data->dinner_is_over);
 			return ;
+		}
 		go_sleep(philo);
 		go_think(philo);
 	}
@@ -42,7 +45,7 @@ static void	go_eat(t_philo *philo)
 	print_philo_action(philo, PHILO_IS_EATING);
 	philo->last_meal_timestamp = get_timestamp();
 	i = 0;
-	while (i < philo->data->time_to_die)
+	while (i < philo->data->time_to_eat)
 	{
 		check_life(philo);
 		usleep(1000);
