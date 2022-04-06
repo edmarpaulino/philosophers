@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:32:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/05 10:40:30 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:07:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ size_t	ft_strlen(char *str);
 int		ft_isspace(int c);
 int		ft_atoi(const char *nptr);
 void	ft_putstr_fd(char *str, int fd);
-void	*ft_lalloc(t_list **list, size_t alloc_size);
-void	ft_lfree(t_list *list);
 long	get_timestamp(void);
 int		are_args_valid(const int argc, const char **argv);
 int		return_error(int error, t_data *data, t_philo *philos);

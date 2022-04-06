@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 15:04:43 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/05 13:49:29 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/06 14:06:49 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ SRC				=	main_bonus.c \
 					ft_isspace_bonus.c \
 					ft_atoi_bonus.c \
 					ft_putstr_fd_bonus.c \
-					ft_lalloc_bonus.c \
-					ft_lfree_bonus.c \
 					are_args_valid_bonus.c \
 					return_error_bonus.c \
 					get_timestamp_bonus.c \
@@ -39,7 +37,7 @@ SRC				=	main_bonus.c \
 OBJ				=	$(SRC:.c=.o)
 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -ggdb3
+CFLAGS			=	-Wall -Wextra -Werror -pthread
 
 INC				=	-I .
 
@@ -50,8 +48,6 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
 
 all: $(NAME)
-
-bonus: all
 
 clean:
 	@rm -f $(OBJ)
@@ -64,4 +60,4 @@ re: fclean all
 norm:
 	norminette
 
-.PHONY: all bonus clean fclean re norm
+.PHONY: all clean fclean re norm

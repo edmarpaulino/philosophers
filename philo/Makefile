@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:36:00 by edpaulin          #+#    #+#              #
-#    Updated: 2022/04/05 13:49:14 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/04/06 13:20:57 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC				=	main.c \
 OBJ = $(SRC:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread -ggdb3
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 INC = -I .
 
@@ -48,8 +48,6 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
 
 all: $(NAME)
-
-bonus: all
 
 clean:
 	@rm -f $(OBJ)
@@ -62,4 +60,4 @@ re: fclean all
 norm:
 	norminette
 
-.PHONY: all bonus clean fclean re norm
+.PHONY: all clean fclean re norm
