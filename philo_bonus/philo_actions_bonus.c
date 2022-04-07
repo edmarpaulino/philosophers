@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:09:55 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/04/05 20:16:31 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/04/07 07:55:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	check_life(t_philo *philo);
 
 void	philo_actions(t_philo *philo)
 {
+	if (philo->num % 2 == 0)
+		usleep(5000);
 	while (1)
 	{
 		go_eat(philo);
