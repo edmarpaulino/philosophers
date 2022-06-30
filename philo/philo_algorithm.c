@@ -23,7 +23,7 @@ void	*philo_algorithm(void *ptr)
 
 	philo = (t_philo *)ptr;
 	if (philo->number % 2 == 0)
-		usleep(700);
+		usleep(1000);
 	if (philo->data->is_alone)
 	{
 		go_eat_alone(philo);
